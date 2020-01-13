@@ -4,7 +4,16 @@
     <head></head>
     <body>
         {% block content %}
-             <h3>Welcome , name</h3>
+        {% if user.is_authenticated %}
+        <h3>Welcome , name</h3>
+        {% endif %}
+             
+           {% if user.is_authenticated %}
+               <a href = {% url 'logout' %}>Logout</>
+               {% else %}
+               <a href="{% url 'login' %}">Login</a>
+               <a href="{% url 'register' %}">Register</a>
+             {% endif %}
         {% endblock content %}
     </body>
 </html>
